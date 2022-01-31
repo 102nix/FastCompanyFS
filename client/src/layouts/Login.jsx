@@ -14,6 +14,8 @@ export const Login = () => {
     )
   }
 
+  console.log(formType)
+
   return (
     <div className="container mt-5">
       <div className="row">

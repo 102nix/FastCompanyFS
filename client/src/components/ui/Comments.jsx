@@ -5,11 +5,11 @@ import { CommentsList } from '../common/comments/CommentsList'
 import { useDispatch, useSelector } from 'react-redux'
 import { getComments, getCommentsLoadingStatus, loadCommentsList, createComment, removeComment } from '../../store/comments'
 import { useParams } from 'react-router-dom'
-import { getCurrentUserId } from '../../store/users'
+// import { getCurrentUserId } from '../../store/users'
 
 export const Comments = () => {
   const { userId } = useParams()
-  const currentUserId = useSelector(getCurrentUserId())
+  // const currentUserId = useSelector(getCurrentUserId())
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(loadCommentsList(userId))
@@ -19,9 +19,9 @@ export const Comments = () => {
 
   const handleSubmit = (data) => {
     console.log(data)
-    data.pageId = userId
-    data.userId = currentUserId
-    dispatch(createComment(data))
+    // data.pageId = userId
+    // data.userId = currentUserId
+    dispatch(createComment({ ...data, pageId: userId }))
   }
 
   const handleRemoveComment = (id) => {
